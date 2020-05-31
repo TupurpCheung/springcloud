@@ -1,0 +1,35 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: cloud-provider-payment
+  cloud:
+    zookeeper:
+      connect-string: 192.168.2.107:2181
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/springcloud?setUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: pass!0ve
+    druid:
+      # 默认 true 为 true 时 validationQuery 必须设为非空字符串
+      # 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+      test-on-borrow: false
+      # 默认 false 为 true 时 validationQuery 必须设为非空字符串
+      # 【建议】配置为true，不影响性能，并且保证安全性。申请连接的时候检测，
+      # 如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      test-while-idle: true
+      # 默认 true 为 true 时 validationQuery 必须设为非空字符串
+      # 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+      test-on-return: false
+      # 用来检测连接是否有效的sql，要求是一个查询语句，常用select 'x'。如果validationQuery为null，
+      # testOnBorrow、testOnReturn、testWhileIdle都不会起作用。
+      validation-query: select 1
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.tupurp.springcloud.entities
