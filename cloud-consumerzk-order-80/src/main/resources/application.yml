@@ -1,0 +1,15 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-service
+  #整合zookeeper
+  cloud:
+    zookeeper:
+      connect-string: 192.168.2.107:2181
+
+
+payment:
+  service:
+    name: http://cloud-provider-payment
