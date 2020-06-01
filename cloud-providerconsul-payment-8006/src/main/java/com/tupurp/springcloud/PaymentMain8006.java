@@ -5,16 +5,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @description: 订单消费者主启动类
+ * @description:
  * @author: tupurp
- * @create: 2020-05-31 21:11
+ * @create: 2020-06-01 22:44
  */
-
 @SpringBootApplication
 @EnableDiscoveryClient
-public class OrderZkMain80 {
+public class PaymentMain8006 {
 
     public static void main(String[] args){
-        SpringApplication.run(OrderZkMain80.class,args);
+        SpringApplication.run(PaymentMain8006.class,args);
     }
 }
