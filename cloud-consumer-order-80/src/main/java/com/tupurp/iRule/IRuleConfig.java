@@ -1,4 +1,4 @@
-package com.tupurp.IRule;
+package com.tupurp.iRule;
 
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;

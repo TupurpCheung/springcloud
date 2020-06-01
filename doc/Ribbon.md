@@ -34,10 +34,16 @@
 
 + 主启动类指定 `@RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = IRuleConfig.class)`
 
+#### 负载均衡算法
+
+通过取余算法实现，接口请求次数 % 服务集群总数量 = 实际调用服务器位置下标
+
 
 #### 类图如何得到
 
 + idea 开发工具
+
++ 切换到指定类（ctrl + alt + 单机类名 可看到实现）
 
 + `ctrl + alt + shift + u`
 

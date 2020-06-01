@@ -1,6 +1,6 @@
 package com.tupurp.springcloud;
 
-import com.tupurp.IRule.IRuleConfig;
+import com.tupurp.iRule.IRuleConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
