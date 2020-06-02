@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: cloud-order-service
+    name: cloud-order-zk-service
   #整合zookeeper
   cloud:
     zookeeper:
