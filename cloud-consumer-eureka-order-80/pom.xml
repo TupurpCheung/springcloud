@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-consumerzk-order-80</artifactId>
+    <artifactId>cloud-consumer-eureka-order-80</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -49,10 +49,12 @@
             <artifactId>hutool-all</artifactId>
             <version>5.1.0</version>
         </dependency>
-        <!--整合 zookeeper client-->
+        <!--eureka client
+        自带了负载均衡 spring-cloud-starter-netflix-ribbon 依赖
+        -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
             <groupId>com.tupurp.springcloud</groupId>
