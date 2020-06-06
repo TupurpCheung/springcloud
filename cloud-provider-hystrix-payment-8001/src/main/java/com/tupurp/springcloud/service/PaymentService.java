@@ -23,7 +23,7 @@ public class PaymentService {
 
 
     /**
-     * 超时的方法
+     * 超时的方法，服务降级使用 this.paymentInfo_timeoutHandler方法
      *
      * */
     @HystrixCommand(fallbackMethod = "paymentInfo_timeoutHandler",commandProperties = {

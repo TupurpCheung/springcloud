@@ -29,6 +29,9 @@ public class OrderHystrixController {
     @Resource
     private PaymentHystrixService paymentHystrixService;
 
+    /**
+     * 此方法服务降级会使用 PaymentHystrixFallbackService.class的实现方法
+     * */
     @GetMapping("/consumer/payment/hystrix/ok/{id}")
     public String paymentInfo_OK(@PathVariable("id") Long id){
         String result = paymentHystrixService.paymentInfo_OK(id);
@@ -36,6 +39,9 @@ public class OrderHystrixController {
         return result;
     }
 
+    /**
+     * 服务降级使用指定的方法 this.paymentInfo_timeoutHandler
+     * */
     @HystrixCommand(fallbackMethod = "paymentInfo_timeoutHandler",commandProperties = {
             @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value = "3000")
     })
@@ -47,7 +53,7 @@ public class OrderHystrixController {
         return result;
     }
 
-    //没有特别指定就用统一的
+    /**没有特别指定就用统一的方法 this.paymentInfo_global_timeoutHandler*/
     @HystrixCommand
     @GetMapping("/consumer/payment/hystrix/timeout/global/{id}")
     public String paymentInfo_timeout_global(@PathVariable("id") Long id){
