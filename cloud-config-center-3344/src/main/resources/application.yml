@@ -34,3 +34,11 @@ eureka:
     lease-renewal-interval-in-seconds: 1
     #Eureka服务端收到最后一次心跳后等待时间上线，单位为秒（默认为90秒） 超时将剔除服务
     lease-expiration-duration-in-seconds: 2
+
+#rabbitmq相关配置，暴露Bus刷新配置的端点
+# 请求 http://localhost:3344/actuator/bus-refresh 地址进行全局通知
+management:
+  endpoints: #暴露Bus刷新配置的端点
+    web:
+      exposure:
+        include: "bus-refresh"

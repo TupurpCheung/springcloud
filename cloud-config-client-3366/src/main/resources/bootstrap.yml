@@ -1,9 +1,9 @@
 server:
-  port: 3355
+  port: 3366
 
 spring:
   application:
-    name: config-client-3355
+    name: config-client-3366
   cloud:
     #Config客户端配置
     config:
@@ -18,13 +18,12 @@ spring:
     username: guest
     password: guest
 
-
 eureka:
   client:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/
   instance:
-    instance-id: config-client-3355
+    instance-id: config-client-3366
     prefer-ip-address: true #访问路径可以显示ip
     #Eureka客户端向服务端发送心跳的实际间隔，单位为秒（默认为30秒）
     lease-renewal-interval-in-seconds: 1
