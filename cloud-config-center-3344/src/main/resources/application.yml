@@ -37,6 +37,8 @@ eureka:
 
 #rabbitmq相关配置，暴露Bus刷新配置的端点
 # 请求 http://localhost:3344/actuator/bus-refresh 地址进行全局通知
+# 请求 http://localhost:3344/actuator/bus-refresh/{destination} 地址进行定点通知
+# 例：http://localhost:3344/actuator/bus-refresh/config-client-3355:3355
 management:
   endpoints: #暴露Bus刷新配置的端点
     web:
