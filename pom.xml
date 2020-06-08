@@ -29,10 +29,23 @@
       <module>cloud-config-center-3344</module>
       <module>cloud-config-center-3355</module>
       <module>cloud-config-client-3366</module>
+    <!--stream屏蔽底层消息队列，生产者-->
       <module>cloud-stream-rabbitmq-provider-8801</module>
+    <!--stream屏蔽底层消息队列，消费者1-->
       <module>cloud-stream-rabbitmq-consumer-8802</module>
+    <!--stream屏蔽底层消息队列，消费者2-->
       <module>cloud-stream-rabbitmq-consumer-8803</module>
 
+    <!--
+    分布式数据跟踪系统
+    https://dl.bintray.com/openzipkin/maven/io/zipkin/java/zipkin-server/2.12.9/
+    下载zipkin,jar包运行
+    访问地址：serverpath:9411/zipkin/
+    trace:类似于树结构  多个span构成的集合，表示一条调用链路，存在唯一标识
+    span：表示调用链路来源，通俗的理解span就是一次请求信息
+
+    也可以使用docker
+    -->
 
   </modules>
 

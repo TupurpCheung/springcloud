@@ -5,6 +5,13 @@ server:
 spring:
   application:
     name: cloud-payment-service
+  #链路跟踪sleuth（侦探）的zipkin配置
+  zipkin:
+    base-url: http://192.168.2.107:9411
+  sleuth:
+    sampler:
+      #采样取值介于 0到1之间，1则表示全部收集
+      probability: 1
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

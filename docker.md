@@ -26,7 +26,7 @@
 
 ```
 
-#### docker 容器操作
+#### docker容器操作
 
 | 操作 | 命令 | 说明 |
 | ---- | ---- | ---- |
@@ -39,6 +39,22 @@
 | 容器日志 | docker logs contain-name/contain-id ||
 | 进入容器 | docker exec -it contain-name/contain-id | eg:docker exec -it b771f /bin/bash|
 | 更多命令  | https://docs.docker.com ||
+
+#### docker命令示例
+
+    docker run -i -t -v /root/software/:/mnt/software/ 9f38484d220f /bin/bash
+    
+   参数解析
+    　
++ `-i`：表示以“交互模式”运行容器
++ `-t`：表示容器启动后会进入其命令行
++ `-v`：表示需要将本地哪个目录挂载到容器中，格式：-v <宿主机目录>:<容器目录>
++ `/bin/bash`：一旦容器启动，需要执行的命令，当前使用 "/bin/bash", 表示启动后直接进bash shell
++ `/root/software`是宿主机器(Linux)上创建的一个文件夹;
++ `/mnt/software`是centos的容器里面的目录文件
++ 这里挂载的意思就是 `9f38484d220f` 创建的容器访问 `/mnt/software/` 目录下的文件就相当于访问 宿主机的 `/root/software/`下的文件，且两者文件夹里内容相同
+
+
 
 
 #### [配置阿里云加速](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)
@@ -64,58 +80,56 @@
     1) `show VARIABLES like 'character_set_server'`
     
     2) [修改docker容器MySQL配置文件](https://blog.csdn.net/zhaoyajie1011/article/details/98623666?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1)
-      ```text
-      #进入容器
-      docker exec -it b771f /bin/bash
-      
-      #查看配置文件
-      more /etc/mysql/mysql.conf.d/mysqld.cnf
-      
-      #退出容器
-      exit
-      
-      #将配置从容器中copy到宿主机（如果没有该配置文件，直接将第三步的配置放到容器中）
-      docker cp b771f:/etc/mysql/mysql.conf.d/mysqld.cnf /root/mysqld.cnf
+                
+            #进入容器
+            docker exec -it b771f /bin/bash
+            
+            #查看配置文件
+            more /etc/mysql/mysql.conf.d/mysqld.cnf
+            
+            #退出容器
+            exit
+            
+            #将配置从容器中copy到宿主机（如果没有该配置文件，直接将第三步的配置放到容器中）
+            docker cp b771f:/etc/mysql/mysql.conf.d/mysqld.cnf /root/mysqld.cnf
+            
+            #将修改后的配置copy到容器  
+            docker cp /root/mysqld.cnf b771f:/etc/mysql/mysql.conf.d/
+            
+            #重启容器
+            docker restart b771f 
 
-      #将修改后的配置copy到容器  
-      docker cp /root/mysqld.cnf b771f:/etc/mysql/mysql.conf.d/
-      
-      #重启容器
-      docker restart b771f 
-
-      ```
     
     
 + 配置内容如下
- 
     
-      # For explanations see
-      # http://dev.mysql.com/doc/mysql/en/server-system-variables.html
+        # For explanations see
+        # http://dev.mysql.com/doc/mysql/en/server-system-variables.html
+        
+        [mysqld]
+        pid-file        = /var/run/mysqld/mysqld.pid
+        socket          = /var/run/mysqld/mysqld.sock
+        datadir         = /var/lib/mysql
+        #log-error      = /var/log/mysql/error.log
+        # By default we only accept connections from localhost
+        #bind-address   = 127.0.0.1
+        # Disabling symbolic-links is recommended to prevent assorted security risks
+        symbolic-links=0
+        character_set_server=utf8
+        init_connect='SET NAMES utf8'
+        max_allowed_packet = 20M
+        
+        [mysql]
+        default-character-set = utf8
+        
+        [mysql.server]
+        default-character-set = utf8
       
-      [mysqld]
-      pid-file        = /var/run/mysqld/mysqld.pid
-      socket          = /var/run/mysqld/mysqld.sock
-      datadir         = /var/lib/mysql
-      #log-error      = /var/log/mysql/error.log
-      # By default we only accept connections from localhost
-      #bind-address   = 127.0.0.1
-      # Disabling symbolic-links is recommended to prevent assorted security risks
-      symbolic-links=0
-      character_set_server=utf8
-      init_connect='SET NAMES utf8'
-      max_allowed_packet = 20M
-      
-      [mysql]
-      default-character-set = utf8
-      
-      [mysql.server]
-      default-character-set = utf8
-      
-      [mysqld_safe]
-      default-character-set = utf8
-      
-      [client]
-      default-character-set = utf8
+        [mysqld_safe]
+        default-character-set = utf8
+        
+        [client]
+        default-character-set = utf8
         
 
 #### [启动zookeeper容器](https://hub.docker.com/_/zookeeper)
@@ -144,6 +158,22 @@
          3.添加selinux规则，改变要挂载的目录的安全性文本
 
 + [参考](https://www.cnblogs.com/lfzm/p/10633595.html)
+
+
+#### [启动rabbitmq容器](https://hub.docker.com/_/rabbitmq)
+
++ 下载镜像 ``pull rabbitmq:3.7.26-management``
+
++ 启动镜像 `docker run -d -p 15672:15672 -p 5672:5672 --hostname rabbit --name rabbit rabbitmq:3.7.26-management`
+
++ `15672` 是页面可视化访问端口，`5672` 是程序使用端口
+
+#### [启动zipkin容器](https://hub.docker.com/r/openzipkin/zipkin)
+
++ 下载镜像 ``docker pull openzipkin/zipkin:2.21``
+
++ 启动镜像 `docker run -d -p 9411:9411 --name zipkin openzipkin/zipkin:2.21`
+
     
     
 
