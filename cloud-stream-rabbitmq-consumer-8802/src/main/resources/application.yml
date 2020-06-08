@@ -21,7 +21,8 @@ spring:
           destination: studyExchange #表示要使用的Exchange名称定义
           content-type: application/json #设置消息类型，本次为json，本文要设置为“text/plain”
           binder: {default：Rabbit} #设置要绑定的消息服务的具体设置
-          group: tupurp-group
+          #group: tupurp-group
+          #消息持久化，消息消费端重启时，消息生产者仍在发送消息，消费端丢失了未消费的消息（但如果配置了自定义分组，队列消息会保留，留待消费端启动后消费）
 eureka:
   client:
     service-url:
