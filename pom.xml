@@ -11,23 +11,39 @@
   <modules>
 
       <module>cloud-api-commons</module>
-    <!--支付-->
+    <!--eureka 作为服务注册中心 服务提供者 支持负载均衡-->
       <module>cloud-provider-eureka-payment-8001</module>
+    <!--eureka 作为服务注册中心 服务提供者 支持负载均衡-->
       <module>cloud-provider-eureka-payment-8002</module>
+    <!--zookeeper 作为服务注册中心 服务提供者-->
       <module>cloud-provider-zk-payment-8004</module>
+    <!--eureka服务注册 消费者-->
       <module>cloud-consumer-eureka-order-80</module>
+    <!--eureka服务注册中心，可配置集群-->
       <module>cloud-eureka-server-7001</module>
+    <!--eureka服务注册中心，可配置集群-->
       <module>cloud-eureka-server-7002</module>
+    <!--zookeeper服务注册 消费者-->
       <module>cloud-consumer-zk-order-80</module>
+    <!--consul服务发现测试 服务提供者-->
       <module>cloud-provider-consul-payment-8006</module>
+    <!--consul服务发现测试 服务消费者-->
       <module>cloud-consumer-consul-order-80</module>
+    <!--feign 服务调用 服务消费者-->
       <module>cloud-consumer-feign-order-80</module>
+    <!--hystrix 服务限流，降级，熔断 服务提供者-->
       <module>cloud-provider-hystrix-payment-8001</module>
+    <!--hystrix 服务限流，降级，熔断 服务消费者-->
       <module>cloud-consumer-feign-hystrix-order-80</module>
+    <!--hystrix 监控台 -->
       <module>cloud-consumer-hystrix-dashboard-9001</module>
+    <!--网关-->
       <module>cloud-gateway-gateway-9527</module>
+    <!--结合github使用的配置中心主节点-->
       <module>cloud-config-center-3344</module>
+    <!--结合github使用的配置中心客户端-->
       <module>cloud-config-center-3355</module>
+    <!--结合github使用的配置中心客户端-->
       <module>cloud-config-client-3366</module>
     <!--stream屏蔽底层消息队列，生产者-->
       <module>cloud-stream-rabbitmq-provider-8801</module>
@@ -35,6 +51,9 @@
       <module>cloud-stream-rabbitmq-consumer-8802</module>
     <!--stream屏蔽底层消息队列，消费者2-->
       <module>cloud-stream-rabbitmq-consumer-8803</module>
+    <!--使用 alibaba nacos 作为服务注册中心的 服务提供者，支持负载均衡-->
+    <module>cloudalibaba-provider-nacos-payment-9001</module>
+    <module>cloudalibaba-provider-nacos-payment-9002</module>
 
     <!--
     分布式数据跟踪系统
