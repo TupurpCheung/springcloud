@@ -54,6 +54,7 @@
     <!--使用 alibaba nacos 作为服务注册中心的 服务提供者，支持负载均衡-->
     <module>cloudalibaba-provider-nacos-payment-9001</module>
     <module>cloudalibaba-provider-nacos-payment-9002</module>
+    <module>cloudalibaba-consumer-nacos-order-83</module>
 
     <!--
     分布式数据跟踪系统

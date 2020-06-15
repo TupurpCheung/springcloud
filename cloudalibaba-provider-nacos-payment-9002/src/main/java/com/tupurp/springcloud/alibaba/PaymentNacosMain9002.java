@@ -11,8 +11,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class PaymentMain9002 {
+public class PaymentNacosMain9002 {
     public static void main(String[] args){
-        SpringApplication.run(PaymentMain9002.class,args);
+        SpringApplication.run(PaymentNacosMain9002.class,args);
     }
 }

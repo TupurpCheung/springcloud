@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @create: 2020-06-15 23:21
  */
 @RestController
-public class PaymentController {
+public class PaymentNacosController {
 
     @Value("${server.port}")
     private String serverPort;

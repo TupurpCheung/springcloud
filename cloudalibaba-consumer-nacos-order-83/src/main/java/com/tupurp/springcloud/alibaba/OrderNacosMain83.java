@@ -7,12 +7,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  * @description:
  * @author: tupurp
- * @create: 2020-06-15 23:18
+ * @create: 2020-06-16 00:01
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class PaymentMain9001 {
+public class OrderNacosMain83 {
     public static void main(String[] args){
-        SpringApplication.run(PaymentMain9001.class,args);
+        SpringApplication.run(OrderNacosMain83.class,args);
     }
 }
